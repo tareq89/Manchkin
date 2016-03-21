@@ -66,6 +66,7 @@
     <Compile Include="Helper\DownloadDataFromMongo.cs" />
     <Compile Include="Model\DetailIntersectionPoint.cs" />
     <Compile Include="Model\Intensitys.cs" />
+    <Compile Include="Model\IntersectionIntensityReport.cs" />
     <Compile Include="Model\IntersectionPoints.cs" />
     <Compile Include="Model\Intersections.cs" />
     <Compile Include="Model\Origins.cs" />

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HodorAnalysis.Model
 {
-    class DetailIntersectionPoint
+    public class DetailIntersectionPoint
     {   
         public IntersectionPoints IntersectionPoint { get; set; }
         public Intersections Intersection { get; set; }
