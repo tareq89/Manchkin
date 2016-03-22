@@ -8,14 +8,12 @@ namespace HodorAnalysis.Model
 {
     public class IntersectionIntensityReport
     {
-        public DateTime Date { get; set; }
-        public DayOfWeek DayOfWeek { get; set; }
-        public int DayOfTheMonth { get; set; }
-        public int DayOfTheYear { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime LastDate { get; set; }
         public DetailIntersectionPoint DetailedIntersectionPoint { get; set; }
         public Dictionary<double, IntensityInATimeSegment> IntensityOn24hourDic { get; set; }
         public IntersectionIntensityReport()
-        {
+        {            
             IntensityOn24hourDic = new Dictionary<double, IntensityInATimeSegment>();
             IntensityOn24hourDic.Add(0.14, new IntensityInATimeSegment());
             IntensityOn24hourDic.Add(0.29, new IntensityInATimeSegment());

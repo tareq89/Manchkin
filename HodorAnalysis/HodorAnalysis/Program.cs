@@ -31,24 +31,22 @@ namespace HodorAnalysis
 
             foreach (var intersectionPoint in detailedIntersectionPoints) 
             {
-                report = new IntersectionIntensityReport();
+                report = new IntersectionIntensityReport();                
                 foreach (var intensity in intersectionPointIdCount)
                 {
                     if (report.DetailedIntersectionPoint == null && intersectionPoint.IntersectionPoint._id.Equals(intensity.IntersectionPointId))
                     {
                         Console.WriteLine(intensity.Time.DayOfYear + "   -   " + intersectionPoint.IntersectionPoint.Name);
-                        report.DetailedIntersectionPoint = detailedIntersectionPoints.Where(x => x.IntersectionPoint._id.Equals(intensity.IntersectionPointId)).FirstOrDefault();
-                        report.DayOfTheYear = intensity.Time.DayOfYear;
-                        report.DayOfTheMonth = intensity.Time.Day;
-                        report.DayOfWeek = intensity.Time.DayOfWeek;
-                        report.Date = intensity.Time.Date;
-
-                        dayOfTheYearFlag = intensity.Time.DayOfYear;
+                        report.DetailedIntersectionPoint = detailedIntersectionPoints.Where(x => x.IntersectionPoint._id.Equals(intensity.IntersectionPointId)).FirstOrDefault();                        
+                        report.StartDate = intensity.Time;
+                        
                     }
                     if (report.DetailedIntersectionPoint != null && report.DetailedIntersectionPoint.IntersectionPoint._id.Equals(intensity.IntersectionPointId))
                     {
                         counter++;
                         var time = intensity.Time;
+                        report.LastDate = time;
+
                         if (time.Hour == 0 && time.Minute < 15) report.SetIntensityOn24hourDic(intensity, report, 0.14);
                         else if (time.Hour == 0 && time.Minute >= 15 && time.Minute < 30) report.SetIntensityOn24hourDic(intensity, report, 0.29);
                         else if (time.Hour == 0 && time.Minute >= 30 && time.Minute < 45) report.SetIntensityOn24hourDic(intensity, report, 0.44);
@@ -60,7 +58,8 @@ namespace HodorAnalysis
                         else if (time.Hour == 1 && time.Minute >= 45 && time.Minute < 60) report.SetIntensityOn24hourDic(intensity, report, 1.59);
 
                         else if (time.Hour == 2 && time.Minute < 15) report.SetIntensityOn24hourDic(intensity, report, 2.14);
-                        else if (time.Hour == 2 && time.Minute >= 15 && time.Minute < 30) report.SetIntensityOn24hourDic(intensity, report, 2.29);
+                        else if (time.Hour == 2 && time.Minute >= 15 && time.Minute < 30)
+                            report.SetIntensityOn24hourDic(intensity, report, 2.29);
                         else if (time.Hour == 2 && time.Minute >= 30 && time.Minute < 45) report.SetIntensityOn24hourDic(intensity, report, 2.44);
                         else if (time.Hour == 2 && time.Minute >= 45 && time.Minute < 60) report.SetIntensityOn24hourDic(intensity, report, 2.59);
 
